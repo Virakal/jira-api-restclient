@@ -345,6 +345,10 @@ class Api
      */
     public function createIssue($projectKey, $summary, $issueType, $options = array())
     {
+        if ($issueType instanceof IssueType) {
+            $issueType = $issueType->getId();
+        }
+
         $default = array(
             "project" => array(
                 "key" => $projectKey,
